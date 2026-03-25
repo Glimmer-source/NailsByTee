@@ -1,0 +1,1233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>NailsByTee | Beauty Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #4a3b2c;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe8e0 100%);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo a {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .navbar {
+            background-color: rgba(255, 245, 240, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 182, 193, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo a {
+            color: #e8a4a4;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            display: block;
+            font-size: 0.6rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 2px;
+            color: #d9b8b8;
+            margin-top: -3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #8b6b6b;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e8a4a4;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #e8a4a4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 22px;
+            height: 2px;
+            background-color: #e8a4a4;
+            margin: 3px 0;
+        }
+
+        .hero {
+            height: 80vh;
+            min-height: 500px;
+            background-image: url('images/nails5.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(232, 164, 164, 0.4), rgba(255, 215, 215, 0.3));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #e8a4a4;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(232, 164, 164, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #dd8e8e;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #e8a4a4;
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #e8a4a4;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background: #e8a4a4;
+            color: white;
+        }
+
+        .btn-book {
+            background: #ffe5e5;
+            color: #e8a4a4;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border: 1px solid #ffd9d9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-book:hover {
+            background: #e8a4a4;
+            color: white;
+        }
+
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 2px solid #ffd9d9;
+            background: transparent;
+            color: #e8a4a4;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: #e8a4a4;
+            color: white;
+            border-color: #e8a4a4;
+        }
+
+        .service-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .service-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .price-category {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(232, 164, 164, 0.1);
+            border: 1px solid #ffe0e0;
+        }
+
+        .price-category:hover {
+            transform: translateY(-3px);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #fff5f0, #ffeae5);
+            padding: 1rem;
+            border-bottom: 2px solid #ffd9d9;
+        }
+
+        .category-header h3 {
+            font-size: 1.1rem;
+            color: #e8a4a4;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .service-list {
+            padding: 0;
+        }
+
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #ffeae5;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-info {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .service-name {
+            font-weight: 600;
+            color: #5e4a3a;
+            font-size: 0.85rem;
+        }
+
+        .service-desc {
+            font-size: 0.7rem;
+            color: #d9b8b8;
+            margin-top: 0.2rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: #e8a4a4;
+            font-size: 0.85rem;
+            margin-right: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .workshop {
+            background: white;
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .workshop-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(232, 164, 164, 0.1);
+            border: 1px solid #ffe0e0;
+        }
+
+        .workshop-header {
+            background: linear-gradient(135deg, #e8a4a4, #dd8e8e);
+            padding: 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        .workshop-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .workshop-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .workshop-content {
+            padding: 1rem;
+        }
+
+        .workshop-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .workshop-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ffeae5;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.75rem;
+        }
+
+        .workshop-features li i {
+            color: #e8a4a4;
+            width: 18px;
+        }
+
+        .workshop-note {
+            background: #fffaf8;
+            padding: 0.8rem;
+            border-radius: 12px;
+            margin: 0.8rem 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #e8a4a4;
+        }
+
+        .workshop-contact {
+            text-align: center;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #ffeae5;
+        }
+
+        .workshop-contact .phone {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e8a4a4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            padding: 1.5rem;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #ffe5e5;
+        }
+
+        .modal-header h3 {
+            color: #e8a4a4;
+            font-size: 1.1rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #d9b8b8;
+        }
+
+        .modal-form input,
+        .modal-form select,
+        .modal-form textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #ffe0e0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            background: #fffaf8;
+            font-size: 0.8rem;
+        }
+
+        .modal-form select {
+            cursor: pointer;
+        }
+
+        .modal-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #e8a4a4;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .selected-service {
+            background: #fffaf8;
+            padding: 0.7rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #e8a4a4;
+            font-size: 0.8rem;
+            border: 1px solid #ffe0e0;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #7a6858;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .about-features {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+
+        .feature i {
+            font-size: 1.3rem;
+            color: #e8b8b8;
+        }
+
+        .feature span {
+            font-size: 0.7rem;
+            color: #b39c8c;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .gallery {
+            background: linear-gradient(135deg, #fff5f0, #ffeae5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(232, 164, 164, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(232, 164, 164, 0.8));
+            padding: 0.8rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: #e8b8b8;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #5e4a3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #b39c8c;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .contact {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            color: #e8b8b8;
+        }
+
+        .info-item h4 {
+            font-size: 0.85rem;
+            color: #5e4a3a;
+        }
+
+        .info-item p {
+            color: #b39c8c;
+            font-size: 0.8rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #ffe0e0;
+            border-radius: 12px;
+            background: #fffaf8;
+            font-size: 0.8rem;
+        }
+
+        .contact-form button {
+            background: #e8a4a4;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #ffeae5, #ffe0e0);
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.2rem;
+            color: #e8a4a4;
+        }
+
+        .footer-logo p {
+            color: #d9b8b8;
+            font-size: 0.7rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #e8b8b8;
+            font-size: 1rem;
+        }
+
+        .copyright {
+            font-size: 0.6rem;
+            color: #d9b8b8;
+        }
+
+        .note-box {
+            background: #fffaf8;
+            border-left: 4px solid #e8a4a4;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            color: #b39c8c;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .workshop-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-item img {
+                height: 250px;
+            }
+            .service-row {
+                flex-wrap: nowrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem 0;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .service-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.4rem;
+            }
+            .service-price {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#">NailsByTee</a>
+                <span class="logo-subtitle">Beauty Studio</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#workshop">Workshops</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">NailsByTee</h1>
+            <p class="hero-subtitle">Where beauty meets elegance - Experience luxury beauty services</p>
+            <a href="#services" class="btn-primary">Make a Booking</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">NailsByTee<br>Where Art Meets Elegance</h2>
+                    <p class="about-text">NailsByTee was founded by the hardworking and passionate Tee Masimula, a dedicated nail artist who turned her dream into reality. With an eye for detail and a heart full of creativity, Tee has built a sanctuary where every client leaves feeling beautiful and confident.</p>
+                    <p class="about-text">Located in the vibrant community of Sibiya Stand, Blaaubosch at Theku Mall Road, NailsByTee offers a warm, welcoming space where precision meets artistry.</p>
+                    <div class="about-features">
+                        <div class="feature"><i class="fas fa-map-marker-alt"></i><span>Sibiya Stand</span></div>
+                        <div class="feature"><i class="fas fa-hand-peace"></i><span>Expert Nail Artistry</span></div>
+                        <div class="feature"><i class="fas fa-heart"></i><span>Founded by Tee</span></div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/thandaza.jpeg" alt="NailsByTee Salon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Our Beautiful Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/nails1.jpeg" alt="Nail Art"><div class="gallery-overlay"><p>Elegant Designs</p></div></div>
+                <div class="gallery-item"><img src="images/nails2.jpeg" alt="Nail Art"><div class="gallery-overlay"><p>Glitter & Glam</p></div></div>
+                <div class="gallery-item"><img src="images/nails3.jpeg" alt="Nail Art"><div class="gallery-overlay"><p>Floral Artistry</p></div></div>
+                <div class="gallery-item"><img src="images/hair1.jpeg" alt="Hair Style"><div class="gallery-overlay"><p>Elegant Styles</p></div></div>
+                <div class="gallery-item"><img src="images/hair2.jpeg" alt="Hair Style"><div class="gallery-overlay"><p>Silky Blowout</p></div></div>
+                <div class="gallery-item"><img src="images/hair3.jpeg" alt="Hair Style"><div class="gallery-overlay"><p>Braided Beauty</p></div></div>
+                <div class="gallery-item"><img src="images/mlungu1.jpeg" alt="Hair Style"><div class="gallery-overlay"><p>Braids</p></div></div>
+                <div class="gallery-item"><img src="images/mlungu2.jpeg" alt="Hair Style"><div class="gallery-overlay"><p>Braids</p></div></div> 
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <span class="section-tag">Our Services</span>
+            <h2 class="section-title">Services & Prices</h2>
+            <p class="section-subtitle">Select your service and book your appointment</p>
+
+            <div class="service-tabs">
+                <button class="tab-btn active" data-tab="nails">Nails & Lashes</button>
+                <button class="tab-btn" data-tab="hair">Hair Styling</button>
+            </div>
+
+            <div id="nails" class="service-section active-section">
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-hand-peace"></i> Plain Nails</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Short Nails</div></div><div class="service-price">R170</div><button class="btn-book" onclick="openBooking('Plain Nails - Short', 'R170')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Medium Nails</div></div><div class="service-price">R200</div><button class="btn-book" onclick="openBooking('Plain Nails - Medium', 'R200')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Long Nails</div></div><div class="service-price">R220</div><button class="btn-book" onclick="openBooking('Plain Nails - Long', 'R220')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Extra Long Nails</div></div><div class="service-price">R250</div><button class="btn-book" onclick="openBooking('Plain Nails - Extra Long', 'R250')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Add Design Per Nail</div></div><div class="service-price">R10</div><button class="btn-book" onclick="openBooking('Add Design Per Nail', 'R10')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">3D Designs & Chrome</div></div><div class="service-price">R15 per nail</div><button class="btn-book" onclick="openBooking('3D Designs & Chrome', 'R15 per nail')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-star"></i> French Nails</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Short & Medium French</div></div><div class="service-price">R250</div><button class="btn-book" onclick="openBooking('French Nails - Short/Medium', 'R250')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Long French</div></div><div class="service-price">R270</div><button class="btn-book" onclick="openBooking('French Nails - Long', 'R270')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Extra Long French</div></div><div class="service-price">R300</div><button class="btn-book" onclick="openBooking('French Nails - Extra Long', 'R300')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Add Pattern on French</div></div><div class="service-price">R50</div><button class="btn-book" onclick="openBooking('French Nails - Add Pattern', 'R50')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-magic"></i> Gel Overlay</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Plain Gel</div></div><div class="service-price">R150</div><button class="btn-book" onclick="openBooking('Gel Overlay - Plain Gel', 'R150')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Gel with French</div></div><div class="service-price">R200</div><button class="btn-book" onclick="openBooking('Gel Overlay - French', 'R200')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Pedicure Plain</div></div><div class="service-price">R100</div><button class="btn-book" onclick="openBooking('Pedicure - Plain', 'R100')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Buff and Shine</div></div><div class="service-price">R120</div><button class="btn-book" onclick="openBooking('Buff and Shine', 'R120')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Add Design Per Nail</div></div><div class="service-price">R10</div><button class="btn-book" onclick="openBooking('Gel Overlay - Add Design', 'R10')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Nails Soak Off</div></div><div class="service-price">R60</div><button class="btn-book" onclick="openBooking('Nails Soak Off', 'R60')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-eye"></i> Lashes</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Strips</div></div><div class="service-price">R60</div><button class="btn-book" onclick="openBooking('Lashes - Strips', 'R60')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Cluster</div></div><div class="service-price">R120</div><button class="btn-book" onclick="openBooking('Lashes - Cluster', 'R120')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Lash Soak Off</div></div><div class="service-price">R80</div><button class="btn-book" onclick="openBooking('Lash Soak Off', 'R80')">Book</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hair" class="service-section">
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-cut"></i> Knotless Braids</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Small</div></div><div class="service-price">R300</div><button class="btn-book" onclick="openBooking('Knotless Braids - Small', 'R300')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Extra Small</div></div><div class="service-price">R400 - R500</div><button class="btn-book" onclick="openBooking('Knotless Braids - Extra Small', 'R400-R500')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Medium</div></div><div class="service-price">R250 - R300</div><button class="btn-book" onclick="openBooking('Knotless Braids - Medium', 'R250-R300')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Large</div></div><div class="service-price">R150 - R200</div><button class="btn-book" onclick="openBooking('Knotless Braids - Large', 'R150-R200')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-arrow-right"></i> Straight Back & Straight Up</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Big Lines</div></div><div class="service-price">R140</div><button class="btn-book" onclick="openBooking('Straight Back - Big Lines', 'R140')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Small Lines</div></div><div class="service-price">R220</div><button class="btn-book" onclick="openBooking('Straight Back - Small Lines', 'R220')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Medium Lines</div></div><div class="service-price">R190</div><button class="btn-book" onclick="openBooking('Straight Back - Medium Lines', 'R190')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-crown"></i> SweetN'Sour & Lemonade</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Small</div></div><div class="service-price">R250 - R280</div><button class="btn-book" onclick="openBooking('SweetN Sour - Small', 'R250-R280')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Extra Small</div></div><div class="service-price">R300 - R350</div><button class="btn-book" onclick="openBooking('SweetN Sour - Extra Small', 'R300-R350')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-dog"></i> Snoopy</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Plain</div></div><div class="service-price">R100</div><button class="btn-book" onclick="openBooking('Snoopy - Plain', 'R100')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Styled</div></div><div class="service-price">R120</div><button class="btn-book" onclick="openBooking('Snoopy - Styled', 'R120')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Plain with Hairpiece</div></div><div class="service-price">R120</div><button class="btn-book" onclick="openBooking('Snoopy - Plain with Hairpiece', 'R120')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Styled with Hairpiece</div></div><div class="service-price">R140</div><button class="btn-book" onclick="openBooking('Snoopy - Styled with Hairpiece', 'R140')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="category-header"><h3><i class="fas fa-spa"></i> Hair Treatments</h3></div>
+                    <div class="service-list">
+                        <div class="service-row"><div class="service-info"><div class="service-name">Dark Lovely Mix</div></div><div class="service-price">R170</div><button class="btn-book" onclick="openBooking('Hair Treatment - Dark Lovely Mix', 'R170')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Soft N Free</div></div><div class="service-price">R100</div><button class="btn-book" onclick="openBooking('Hair Treatment - Soft N Free', 'R100')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Restore</div></div><div class="service-price">R120</div><button class="btn-book" onclick="openBooking('Hair Treatment - Restore', 'R120')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Treatment</div></div><div class="service-price">R70</div><button class="btn-book" onclick="openBooking('Hair Treatment - Basic', 'R70')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Wash</div></div><div class="service-price">R50</div><button class="btn-book" onclick="openBooking('Wash', 'R50')">Book</button></div>
+                        <div class="service-row"><div class="service-info"><div class="service-name">Add Curls</div></div><div class="service-price">R30</div><button class="btn-book" onclick="openBooking('Add Curls', 'R30')">Book</button></div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-info-circle"></i> Please note: You bring your own hairpiece for all braiding services.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workshop" id="workshop">
+        <div class="container">
+            <span class="section-tag">Learn With Us</span>
+            <h2 class="section-title">Beginner Nail Tech Workshop</h2>
+            <p class="section-subtitle">Start your journey in the beauty industry with our comprehensive training</p>
+            <div class="workshop-grid">
+                <div class="workshop-card">
+                    <div class="workshop-header"><h3>Silver Package</h3><div class="workshop-price">R1,100</div><p>50% non-refundable deposit</p></div>
+                    <div class="workshop-content">
+                        <ul class="workshop-features">
+                            <li><i class="fas fa-check-circle"></i> Acetone 500ml</li>
+                            <li><i class="fas fa-check-circle"></i> Monomer 500ml</li>
+                            <li><i class="fas fa-check-circle"></i> Nail Prep</li>
+                            <li><i class="fas fa-check-circle"></i> Tip Shaping and Sizing</li>
+                            <li><i class="fas fa-check-circle"></i> Gel Overlay</li>
+                            <li><i class="fas fa-check-circle"></i> Acrylic Application</li>
+                            <li><i class="fas fa-check-circle"></i> Basic Designs</li>
+                            <li><i class="fas fa-check-circle"></i> Certificate of Attendance</li>
+                        </ul>
+                        <div class="workshop-contact"><p class="phone"><i class="fas fa-phone-alt"></i> 068 115 1754</p><button class="btn-secondary" onclick="openWorkshopBooking('Silver Package', 'R1,100')">Enquire Now</button></div>
+                    </div>
+                </div>
+                <div class="workshop-card">
+                    <div class="workshop-header"><h3>Gold Package</h3><div class="workshop-price">R1,900</div><p>50% non-refundable deposit</p></div>
+                    <div class="workshop-content">
+                        <ul class="workshop-features">
+                            <li><i class="fas fa-check-circle"></i> Full Silver Package Kit</li>
+                            <li><i class="fas fa-check-circle"></i> 120g Acrylic powders</li>
+                            <li><i class="fas fa-check-circle"></i> 6 Gels + UV Lamp</li>
+                            <li><i class="fas fa-check-circle"></i> Practice Hand + Tips</li>
+                            <li><i class="fas fa-check-circle"></i> Acrylic Brushes + Duster</li>
+                            <li><i class="fas fa-check-circle"></i> Nail Business Mentorship</li>
+                            <li><i class="fas fa-check-circle"></i> Full Kit to take home</li>
+                            <li><i class="fas fa-check-circle"></i> Certificate of Attendance</li>
+                        </ul>
+                        <div class="workshop-contact"><p class="phone"><i class="fas fa-phone-alt"></i> 068 115 1754</p><button class="btn-secondary" onclick="openWorkshopBooking('Gold Package', 'R1,900')">Enquire Now</button></div>
+                    </div>
+                </div>
+                <div class="workshop-card">
+                    <div class="workshop-header" style="background: linear-gradient(135deg, #e8b8b8, #d9a8a8);"><h3>What You'll Learn</h3><p>Classes 2026</p></div>
+                    <div class="workshop-content">
+                        <ul class="workshop-features">
+                            <li><i class="fas fa-paintbrush-fine"></i> Tip Shaping and Sizing</li>
+                            <li><i class="fas fa-magic"></i> Gel Overlay Techniques</li>
+                            <li><i class="fas fa-hand-peace"></i> Acrylic Application</li>
+                            <li><i class="fas fa-chart-line"></i> Nail Business Mentorship</li>
+                            <li><i class="fas fa-certificate"></i> Certificate of Attendance</li>
+                        </ul>
+                        <div class="workshop-note"><i class="fas fa-calendar-alt"></i> Classes run throughout 2026<br>Bookings Open Now</div>
+                        <div class="workshop-contact"><button class="btn-secondary" onclick="openWorkshopBooking('Workshop Information', 'Call for details')">Contact Us</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Visit Our Studio</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Sibiya Stand, Blaaubosch<br>Theku Mall Road</p></div></div>
+                    <div class="info-item"><i class="fas fa-phone-alt"></i><div><h4>Phone & WhatsApp</h4><p>068 115 1754</p></div></div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>thandazilemasimula2@gmail.com</p></div></div>
+                    <div class="info-item"><i class="fas fa-clock"></i><div><h4>Opening Hours</h4><p>Mon: Closed<br>Tue-Thu: 9am - 5pm<br>Fri: 9am - 5pm<br>Sat: 9am - 3pm<br>Sun: 9am - 6pm</p></div></div>
+                </div>
+                <form class="contact-form" id="directContactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <textarea rows="4" placeholder="Your Message"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo"><h3>NailsByTee</h3><p>Beauty Studio</p></div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="copyright">© 2026 NailsByTee. All rights reserved. | Created by Tee Masimula</p>
+        </div>
+    </footer>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Book Your Appointment</h3><button class="close-modal" onclick="closeBooking()">&times;</button></div>
+            <div id="selectedServiceDisplay" class="selected-service"></div>
+            <form id="bookingForm" class="modal-form">
+                <input type="hidden" id="serviceName">
+                <input type="hidden" id="servicePrice">
+                <input type="text" placeholder="Full Name" required id="customerName">
+                <input type="email" placeholder="Email Address" required id="customerEmail">
+                <input type="tel" placeholder="Phone Number" required id="customerPhone">
+                <input type="date" required id="bookingDate">
+                <select id="bookingTime" required>
+                    <option value="">Select Time</option>
+                    <option value="09:00">09:00</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:00">10:00</option>
+                    <option value="10:30">10:30</option>
+                    <option value="11:00">11:00</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:00">15:00</option>
+                    <option value="15:30">15:30</option>
+                    <option value="16:00">16:00</option>
+                    <option value="16:30">16:30</option>
+                    <option value="17:00">17:00</option>
+                </select>
+                <textarea rows="3" placeholder="Special requests..." id="specialRequests"></textarea>
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const OWNER_PHONE = "0681151754";
+
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.service-section');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                sections.forEach(section => {
+                    section.classList.remove('active-section');
+                    if (section.id === tabId) section.classList.add('active-section');
+                });
+            });
+        });
+
+        const modal = document.getElementById('bookingModal');
+        
+        function formatPhoneNumber(phone) {
+            let cleaned = phone.replace(/\D/g, '');
+            if (cleaned.startsWith('0')) cleaned = '27' + cleaned.substring(1);
+            if (!cleaned.startsWith('27')) cleaned = '27' + cleaned;
+            return cleaned;
+        }
+
+        function sendWhatsAppMessage(phoneNumber, message) {
+            const formattedNumber = formatPhoneNumber(phoneNumber);
+            window.open(`https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function openBooking(service, price) {
+            document.getElementById('selectedServiceDisplay').innerHTML = `Selected: ${service} | Price: ${price}`;
+            document.getElementById('serviceName').value = service;
+            document.getElementById('servicePrice').value = price;
+            modal.classList.add('active');
+        }
+
+        function openWorkshopBooking(packageName, price) {
+            document.getElementById('selectedServiceDisplay').innerHTML = `Selected: Workshop - ${packageName} | Price: ${price}`;
+            document.getElementById('serviceName').value = `Workshop: ${packageName}`;
+            document.getElementById('servicePrice').value = price;
+            modal.classList.add('active');
+        }
+
+        function closeBooking() { modal.classList.remove('active'); }
+        window.onclick = (event) => { if (event.target === modal) closeBooking(); }
+
+        // Booking form submit
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('customerName').value;
+            const email = document.getElementById('customerEmail').value;
+            const phone = document.getElementById('customerPhone').value;
+            const service = document.getElementById('serviceName').value;
+            const price = document.getElementById('servicePrice').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+            const requests = document.getElementById('specialRequests').value;
+            
+            if (!phone) { alert('Please enter your phone number'); return; }
+            if (!date) { alert('Please select a date'); return; }
+            if (!time) { alert('Please select a time'); return; }
+            
+            const ownerMessage = `New Booking Request\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\nPrice: ${price}\nDate: ${date}\nTime: ${time}\nRequests: ${requests || 'None'}`;
+            sendWhatsAppMessage(OWNER_PHONE, ownerMessage);
+            alert(`Booking request sent to NailsByTee! The owner will contact you on ${phone} to confirm.`);
+            closeBooking();
+            e.target.reset();
+        });
+
+        // Contact form
+        document.getElementById('directContactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = e.target.querySelector('input[placeholder="Your Name"]').value;
+            const email = e.target.querySelector('input[placeholder="Email Address"]').value;
+            const phone = e.target.querySelector('input[placeholder="Phone Number"]').value;
+            const message = e.target.querySelector('textarea').value;
+            sendWhatsAppMessage(OWNER_PHONE, `New Contact Form Message\n\nName: ${name}\nPhone: ${phone || 'Not provided'}\nEmail: ${email}\nMessage: ${message}`);
+            alert('Thank you for your message. The owner will get back to you shortly.');
+            e.target.reset();
+        });
+
+        // Animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.price-category, .about-content, .contact-info, .contact-form, .gallery-item, .workshop-card').forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(25px)'; el.style.transition = 'all 0.5s ease'; observer.observe(el);
+        });
+    </script>
+</body>
+</html>
